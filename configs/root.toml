@@ -1,0 +1,12 @@
+# Hermes Root Management Service Configuration
+
+[server]
+bind_address = "127.0.0.1:9090"
+heartbeat_timeout_secs = 6
+heartbeat_check_interval_secs = 2
+
+[storage]
+event_log_capacity = 2000
+log_history_capacity = 5000
+persist_events = true
+events_file = "logs/root_events.jsonl"

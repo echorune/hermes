@@ -1,0 +1,19 @@
+# Hermes Host Configuration: Fault Simulator
+
+[host]
+id = "host-diagnostic-01"
+name = "Diagnostic Testing Host"
+root_address = "127.0.0.1:9090"
+heartbeat_interval_secs = 2
+log_level = "debug"
+log_dir = "logs"
+
+[[plugins]]
+id = "fault-simulator"
+name = "Fault Injection & Forensics Engine"
+path = "target/release/libfault_simulator.so"
+enabled = true
+
+[plugins.config]
+worker_threads = 4
+allow_panic_injection = true

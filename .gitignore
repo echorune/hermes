@@ -1,0 +1,26 @@
+# Rust build artifacts
+target/
+**/*.rs.bk
+
+# Python virtual environments & bytecode
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Runtime logs and backup archives
+logs/*.log
+logs/backups/
+*.log
+
+# Shared libraries in root
+*.so
+*.dylib
+*.dll
+
+# IDE / System
+.vscode/
+.idea/
+.DS_Store

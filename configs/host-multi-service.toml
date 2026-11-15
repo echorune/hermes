@@ -1,0 +1,27 @@
+# Hermes Host Configuration: Multiple Independent Services
+
+[host]
+id = "host-multi-01"
+name = "Composite Services Host"
+root_address = "127.0.0.1:9090"
+heartbeat_interval_secs = 2
+log_level = "info"
+log_dir = "logs"
+
+[[plugins]]
+id = "telemetry-collector"
+name = "Telemetry Engine"
+path = "target/release/libtelemetry_service.so"
+enabled = true
+
+[plugins.config]
+sampling_rate_ms = 1000
+
+[[plugins]]
+id = "order-processor"
+name = "Order Processing Pipeline"
+path = "target/release/liborder_processor.so"
+enabled = true
+
+[plugins.config]
+batch_size = 200

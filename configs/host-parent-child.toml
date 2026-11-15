@@ -1,0 +1,31 @@
+# Hermes Host Configuration: Parent-Child Pipeline
+
+[host]
+id = "host-pipeline-01"
+name = "Production Processing Host"
+root_address = "127.0.0.1:9090"
+heartbeat_interval_secs = 2
+log_level = "info"
+log_dir = "logs"
+
+[[plugins]]
+id = "order-processor"
+name = "Order Processing Pipeline"
+path = "target/release/liborder_processor.so"
+enabled = true
+children = ["inventory-worker"]
+
+[plugins.config]
+batch_size = 100
+workers = 4
+
+[[plugins]]
+id = "inventory-worker"
+name = "Inventory Management Worker"
+path = "target/release/libinventory_worker.so"
+enabled = true
+parent = "order-processor"
+
+[plugins.config]
+cache_capacity = 10000
+auto_rebalance = true

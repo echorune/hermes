@@ -1,0 +1,19 @@
+# Hermes Host Configuration: Single Telemetry Service
+
+[host]
+id = "host-telemetry-01"
+name = "Telemetry Collection Host"
+root_address = "127.0.0.1:9090"
+heartbeat_interval_secs = 2
+log_level = "info"
+log_dir = "logs"
+
+[[plugins]]
+id = "telemetry-collector"
+name = "Telemetry Engine"
+path = "target/release/libtelemetry_service.so"
+enabled = true
+
+[plugins.config]
+sampling_rate_ms = 500
+worker_threads = 3
